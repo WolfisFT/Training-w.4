@@ -1,11 +1,13 @@
 #include "GameObject.h"
 
+
 GameObject::GameObject()
 {
 	input = nullptr;
 	window = nullptr;
 	alive = true;
 	collider = false;
+
 }
 
 GameObject::~GameObject()

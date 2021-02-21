@@ -1,9 +1,12 @@
 #pragma once
-
 #include <SFML/Graphics.hpp>
 #include "Framework/BaseLevel.h"
 #include "Framework/Input.h"
 #include "Framework/GameObject.h"
+#include "Player.h"
+#include "Enemy.h"
+#include "Cursor.h"
+#include "Background.h"
 #include <string.h>
 #include <iostream>
 
@@ -22,4 +25,20 @@ private:
 	GameObject testSprite;
 	sf::Texture texture;
 
+	//Player object
+	Player playerSprite;
+
+	//Enemy objects
+	Enemy enemySprite;
+	Enemy enemySprite1;
+	
+	//Cursor object
+	Cursor cursorIcon;
+
+	//Background object
+	Background levelView;
+	sf::View view;
+	
+
+	
 };
