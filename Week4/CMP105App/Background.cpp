@@ -62,8 +62,9 @@ void Background::update(float dt)
 
 
 	std::cout << ViewPos.x *(-1)<< "   LevelPOS: " << LevelPos.x << "\n" ;
-	if (ViewPos.x *(-1) > LevelPos.x)
+	if (ViewPos.x * (-1) > LevelPos.x -200)
 	{
+
 		//Once we hit right side of our wndow
 		//stop the object (speed = 0),
 		//but also stop "Right" key from changing speed value
