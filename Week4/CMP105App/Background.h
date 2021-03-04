@@ -16,7 +16,7 @@ public:
 
 	void setInput(Input*);
 	void handleInput(float);
-	void update(float);
+	void update(float, sf::RenderWindow*);
 	
 
 private:
@@ -24,7 +24,7 @@ private:
 
 	bool Rgo = 1;	//permission for "Right" key to make a move
 	bool Lgo = 1;	//permission for "Left" key to make a move
-
+	
 };
 
 

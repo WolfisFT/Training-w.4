@@ -7,7 +7,10 @@ Background::Background()
 	setSize(sf::Vector2f(11038, 675));
 	setTexture(&level);
 
+	view.setSize(sf::Vector2f(1200.f, 675.f));
+	view.setCenter(sf::Vector2f(view.getSize().x/2, view.getSize().y/2));
 }
+
 
 Background::~Background()
 {
@@ -22,57 +25,47 @@ void Background::setInput(Input* in)
 
 void Background::handleInput(float dt)
 {
-	bool LEFT = input->isKeyDown(sf::Keyboard::Left);
-	bool RIGHT = input->isKeyDown(sf::Keyboard::Right);
-
-	if (RIGHT)
+	if (input->isKeyDown(sf::Keyboard::Right))
 	{
-		//if "Right" key is able to make a move
-		//then go in positive direction on x-axis
 		if (Rgo == 1)
 		{
-			setVelocity(-1000.f, 0.f);
-			//allow for "Left" key to make a move
-			//at any time
+			setVelocity(1000.f, 0.f);
 			Lgo = 1;
 		}
-		move(velocity *dt);
+		view.move(velocity * dt);
 	}
-
-	if (LEFT)
+	
+	if (input->isKeyDown(sf::Keyboard::Left))
 	{
-		//if "Left" key is able to make a move
-		//then go in negative direction on x-axis
 		if (Lgo == 1)
 		{
-			setVelocity(1000.f, 0.f);
-			//allow for "Right" key to make a move
-			//at any time
+			setVelocity(-1000.f, 0.f);
 			Rgo = 1;
 		}
-		move(velocity * dt);
+		view.move(velocity * dt);
 	}
-
 }
 
-void Background::update(float dt)
+void Background::update(float dt, sf::RenderWindow* window)
 {
-	sf::Vector2f ViewPos = getPosition();
+	window->setView(view);
+
+	sf::Vector2f ViewPos = view.getCenter();
 	sf::Vector2u LevelPos = level.getSize();
 
 
-	std::cout << ViewPos.x *(-1)<< "   LevelPOS: " << LevelPos.x << "\n" ;
-	if (ViewPos.x * (-1) > LevelPos.x -200)
+	std::cout << ViewPos.x << "   LevelPOS: " << LevelPos.x << "\n";
+	if (ViewPos.x > LevelPos.x )
 	{
 
 		//Once we hit right side of our wndow
 		//stop the object (speed = 0),
 		//but also stop "Right" key from changing speed value
-	
+
 		setVelocity(0, 0);
 		Rgo = 0;
 	}
-	else if (ViewPos.x > 0)
+	else if (ViewPos.x < view.getSize().x / 2)
 	{
 		//Once we hit left side of our wndow
 		//stop the object (speed = 0),
@@ -80,5 +73,4 @@ void Background::update(float dt)
 		setVelocity(0, 0);
 		Lgo = 0;
 	}
-
 }

@@ -25,7 +25,11 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	window->setMouseCursorVisible(false);
 
 	//setting the background
-	levelView.setInput(input);
+	levelPic.setInput(input);
+
+
+	
+
 
 }
 
@@ -40,7 +44,7 @@ void Level::handleInput(float dt)
 	//calling a Player class and a Background class
 	//handleinput() functions
 	playerSprite.handleInput(dt);
-	levelView.handleInput(dt);
+	levelPic.handleInput(dt);
 
 	// Close window on Escape pressed.
 	if (input->isKeyDown(sf::Keyboard::Escape))
@@ -56,11 +60,12 @@ void Level::update(float dt)
 	//calling the updates for player, enemies
 	//cursor and background
 	//passing 'window' to make use of window->getSize() function
+	levelPic.update(dt, window);
 	enemySprite.update(dt, window);
 	enemySprite1.update(dt, window);
 	playerSprite.update(dt, window);
 	cursorIcon.update(dt);
-	levelView.update(dt);
+
 	
 }
 
@@ -68,15 +73,13 @@ void Level::update(float dt)
 void Level::render()
 {
 	beginDraw();
-
+	
 	//window->draw(testSprite);
-	window->draw(levelView);
+	window->draw(levelPic);
 	window->draw(playerSprite);
 	window->draw(enemySprite);
 	window->draw(enemySprite1);
 	window->draw(cursorIcon);
-
-
 
 	endDraw();
 }

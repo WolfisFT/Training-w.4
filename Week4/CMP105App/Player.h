@@ -3,7 +3,6 @@
 #include "Framework/BaseLevel.h"
 #include "Framework/Input.h"
 #include "Framework/GameObject.h"
-
 class Player :
 	public GameObject
 {

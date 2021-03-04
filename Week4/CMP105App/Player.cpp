@@ -36,7 +36,7 @@ void Player::handleInput(float dt)
 		//then go in positive direction on x-axis
 		if (Rgo == 1)
 		{
-			setVelocity(300, 0);
+			setVelocity(500, 0);
 			//allow for "A" key to make a move
 			//at any time
 			Lgo = 1;
@@ -50,7 +50,7 @@ void Player::handleInput(float dt)
 		//then go in negative direction on x-axis
 		if (Lgo == 1)
 		{
-			setVelocity(-300, 0);
+			setVelocity(-500, 0);
 			//allow for "D" key to make a move
 			//at any time
 			Rgo = 1;
@@ -62,7 +62,7 @@ void Player::handleInput(float dt)
 	{
 		if (UPgo == 1)
 		{
-			setVelocity(0, 300);
+			setVelocity(0, 500);
 			//allow for "S" key to make a move
 			//at any time
 			DOWNgo = 1;
@@ -74,7 +74,7 @@ void Player::handleInput(float dt)
 	{
 		if (DOWNgo == 1)
 		{
-			setVelocity(0, -300);
+			setVelocity(0, -500);
 			UPgo = 1;
 		}
 		move(-velocity * dt);

@@ -36,8 +36,7 @@ private:
 	Cursor cursorIcon;
 
 	//Background object
-	Background levelView;
-	sf::View view;
+	Background levelPic;
 	
 
 	
